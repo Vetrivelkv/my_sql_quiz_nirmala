@@ -191,146 +191,377 @@
   {
     "id": 18,
     "type": "sql",
-    "question": "Create a table users with id as PRIMARY KEY.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show all user IDs from the users table.\n\nSELECT id FROM users;",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);",
+    "seed_data": [
+      {
+        "table": "users",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Alice"
+          },
+          {
+            "id": 2,
+            "name": "Bob"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id"],
+    "expected_rows": [[1], [2]]
   },
   {
     "id": 19,
     "type": "sql",
-    "question": "Create a table orders with composite key (order_id, user_id).",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show the composite key columns from the orders table.\n\nSELECT order_id, user_id FROM orders;",
+    "schema_sql": "CREATE TABLE orders (order_id INTEGER, user_id INTEGER, amount REAL, PRIMARY KEY (order_id, user_id));",
+    "seed_data": [
+      {
+        "table": "orders",
+        "rows": [
+          {
+            "order_id": 101,
+            "user_id": 1,
+            "amount": 250.0
+          },
+          {
+            "order_id": 102,
+            "user_id": 2,
+            "amount": 300.0
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["order_id", "user_id"],
+    "expected_rows": [
+      [101, 1],
+      [102, 2]
+    ]
   },
   {
     "id": 20,
     "type": "sql",
-    "question": "Create a table with UNIQUE constraint on email.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show all unique email values from the users table.\n\nSELECT DISTINCT email FROM users;",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY, email TEXT UNIQUE);",
+    "seed_data": [
+      {
+        "table": "users",
+        "rows": [
+          {
+            "id": 1,
+            "email": "alice@example.com"
+          },
+          {
+            "id": 2,
+            "email": "bob@example.com"
+          },
+          {
+            "id": 3,
+            "email": "carol@example.com"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["email"],
+    "expected_rows": [
+      ["alice@example.com"],
+      ["bob@example.com"],
+      ["carol@example.com"]
+    ]
   },
   {
     "id": 21,
     "type": "sql",
-    "question": "Create a table employees with NOT NULL constraint on name.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show the names of all employees.\n\nSELECT name FROM employees;",
+    "schema_sql": "CREATE TABLE employees (id INTEGER PRIMARY KEY, name TEXT NOT NULL, department TEXT);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          {
+            "id": 1,
+            "name": "John",
+            "department": "HR"
+          },
+          {
+            "id": 2,
+            "name": "Priya",
+            "department": "IT"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["name"],
+    "expected_rows": [["John"], ["Priya"]]
   },
   {
     "id": 22,
     "type": "sql",
-    "question": "Create a table products with CHECK constraint price > 0.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show product names and prices where the price is greater than 0.\n\nSELECT name, price FROM products WHERE price > 0;",
+    "schema_sql": "CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, price REAL CHECK(price > 0));",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Keyboard",
+            "price": 49.99
+          },
+          {
+            "id": 2,
+            "name": "Mouse",
+            "price": 19.99
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["name", "price"],
+    "expected_rows": [
+      ["Keyboard", 49.99],
+      ["Mouse", 19.99]
+    ]
   },
   {
     "id": 23,
     "type": "sql",
-    "question": "Create a table orders with foreign key user_id referencing users(id).",
-    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY);",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show each order ID with the matching user ID.\n\nSELECT id, user_id FROM orders;",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE orders (id INTEGER PRIMARY KEY, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id));",
+    "seed_data": [
+      {
+        "table": "users",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Alice"
+          },
+          {
+            "id": 2,
+            "name": "Bob"
+          }
+        ]
+      },
+      {
+        "table": "orders",
+        "rows": [
+          {
+            "id": 201,
+            "user_id": 1
+          },
+          {
+            "id": 202,
+            "user_id": 2
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "user_id"],
+    "expected_rows": [
+      [201, 1],
+      [202, 2]
+    ]
   },
   {
     "id": 24,
     "type": "sql",
-    "question": "Drop table users if exists.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Return a message only if the users table exists.\n\nSELECT 'users table exists' AS message FROM users LIMIT 1;",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);",
+    "seed_data": [
+      {
+        "table": "users",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Alice"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["message"],
+    "expected_rows": [["users table exists"]]
   },
   {
     "id": 25,
     "type": "sql",
-    "question": "Delete a user record with id = 1.",
-    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY);",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
-  },
-  {
-    "id": 26,
-    "type": "sql",
-    "question": "Create two tables drivers and rides with foreign key relationship.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show the user record where id = 1.\n\nSELECT id, name FROM users WHERE id = 1;",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);",
+    "seed_data": [
+      {
+        "table": "users",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Alice"
+          },
+          {
+            "id": 2,
+            "name": "Bob"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name"],
+    "expected_rows": [[1, "Alice"]]
   },
   {
     "id": 27,
     "type": "sql",
-    "question": "Insert a record into drivers table.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show all records from the drivers table.\n\nSELECT id, name FROM drivers;",
+    "schema_sql": "CREATE TABLE drivers (id INTEGER PRIMARY KEY, name TEXT);",
+    "seed_data": [
+      {
+        "table": "drivers",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Kumar"
+          },
+          {
+            "id": 2,
+            "name": "Sara"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name"],
+    "expected_rows": [
+      [1, "Kumar"],
+      [2, "Sara"]
+    ]
   },
   {
     "id": 28,
     "type": "sql",
-    "question": "Insert a record into rides table referencing drivers.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
-  },
-  {
-    "id": 29,
-    "type": "sql",
-    "question": "Select all rows from drivers and rides tables.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
-  },
-  {
-    "id": 30,
-    "type": "sql",
-    "question": "Delete a record safely from parent table with foreign key constraint.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show all rides with their driver_id values.\n\nSELECT id, driver_id FROM rides;",
+    "schema_sql": "CREATE TABLE drivers (id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE rides (id INTEGER PRIMARY KEY, driver_id INTEGER, destination TEXT, FOREIGN KEY(driver_id) REFERENCES drivers(id));",
+    "seed_data": [
+      {
+        "table": "drivers",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Kumar"
+          }
+        ]
+      },
+      {
+        "table": "rides",
+        "rows": [
+          {
+            "id": 1001,
+            "driver_id": 1,
+            "destination": "Airport"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "driver_id"],
+    "expected_rows": [[1001, 1]]
   },
   {
     "id": 31,
     "type": "sql",
-    "question": "Create table with ON DELETE CASCADE.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show child rows that would be removed by ON DELETE CASCADE for parent_id = 1.\n\nSELECT id, parent_id FROM child WHERE parent_id = 1;",
+    "schema_sql": "CREATE TABLE parent (id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE child (id INTEGER PRIMARY KEY, parent_id INTEGER, FOREIGN KEY(parent_id) REFERENCES parent(id) ON DELETE CASCADE);",
+    "seed_data": [
+      {
+        "table": "parent",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Parent A"
+          },
+          {
+            "id": 2,
+            "name": "Parent B"
+          }
+        ]
+      },
+      {
+        "table": "child",
+        "rows": [
+          {
+            "id": 101,
+            "parent_id": 1
+          },
+          {
+            "id": 102,
+            "parent_id": 1
+          },
+          {
+            "id": 103,
+            "parent_id": 2
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "parent_id"],
+    "expected_rows": [
+      [101, 1],
+      [102, 1]
+    ]
   },
   {
     "id": 32,
     "type": "sql",
-    "question": "Create a table with DEFAULT value for status column.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show each task status, using the default value already stored in the table.\n\nSELECT id, status FROM tasks;",
+    "schema_sql": "CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, status TEXT DEFAULT 'pending');",
+    "seed_data": [
+      {
+        "table": "tasks",
+        "rows": [
+          {
+            "id": 1,
+            "title": "Learn SQL",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Practice queries",
+            "status": "completed"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "status"],
+    "expected_rows": [
+      [1, "pending"],
+      [2, "completed"]
+    ]
   },
   {
     "id": 33,
     "type": "sql",
-    "question": "Create table with isDeleted column for soft delete.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show records that are not soft-deleted.\n\nSELECT id, name FROM documents WHERE isDeleted = 0;",
+    "schema_sql": "CREATE TABLE documents (id INTEGER PRIMARY KEY, name TEXT, isDeleted INTEGER DEFAULT 0);",
+    "seed_data": [
+      {
+        "table": "documents",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Doc A",
+            "isDeleted": 0
+          },
+          {
+            "id": 2,
+            "name": "Doc B",
+            "isDeleted": 1
+          },
+          {
+            "id": 3,
+            "name": "Doc C",
+            "isDeleted": 0
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name"],
+    "expected_rows": [
+      [1, "Doc A"],
+      [3, "Doc C"]
+    ]
   },
   {
     "id": 34,

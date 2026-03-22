@@ -1,25 +1,31 @@
 import json
+import os
+from dotenv import load_dotenv
+import re
 import smtplib
 import sqlite3
 from copy import deepcopy
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from typing import Any
 
 import streamlit as st
 
 st.set_page_config(page_title="SQL Quiz App", page_icon="🗄️", layout="wide")
 
-# -----------------------------
-# EMAIL SETTINGS
-# -----------------------------
-SENDER_EMAIL = "vetrikvk@gmail.com"
-SENDER_APP_PASSWORD = "yyxe hzeo mnox hnlx"
-RECEIVER_EMAILS = [
-    "knkarthi2002@gmail.com",
-    "vetrivelkvk@gmail.com",
-    "knirmalak99@gmail.com",
-]
 
+load_dotenv()
+
+def _get_secret_or_env(key, default=None):
+    try:
+        return st.secrets.get(key, os.getenv(key, default))
+    except Exception:
+        return os.getenv(key, default)
+
+SENDER_EMAIL = _get_secret_or_env("SENDER_EMAIL", "")
+SENDER_APP_PASSWORD = _get_secret_or_env("SENDER_APP_PASSWORD", "")
+RECEIVER_EMAILS_RAW = _get_secret_or_env("RECEIVER_EMAILS", "")
+RECEIVER_EMAILS = [email.strip() for email in RECEIVER_EMAILS_RAW.split(",") if email.strip()]
 # -----------------------------
 # QUIZ CONFIG
 # -----------------------------
@@ -29,30 +35,56 @@ QUIZ_FILES = {
     "SQL Quiz 3 - Basics-3": "sql_quiz_3.json",
 }
 
+READ_ONLY_SQL_KEYWORDS = {
+    "select",
+    "with",
+}
+
+BLOCKED_SQL_PATTERNS = [
+    r"\binsert\b",
+    r"\bupdate\b",
+    r"\bdelete\b",
+    r"\bdrop\b",
+    r"\balter\b",
+    r"\btruncate\b",
+    r"\battach\b",
+    r"\bdetach\b",
+    r"\bpragma\b",
+    r"\bcreate\b",
+    r"\breplace\b",
+    r"\bvacuum\b",
+    r"\btransaction\b",
+    r"\bbegin\b",
+    r"\bcommit\b",
+    r"\brollback\b",
+]
 
 # -----------------------------
 # HELPER FUNCTIONS
 # -----------------------------
-def load_questions(file_name):
+def load_questions(file_name: str) -> list[dict[str, Any]]:
     with open(file_name, "r", encoding="utf-8") as file:
         return json.load(file)
 
 
-def check_answer(user_answer, correct_answer):
+def check_answer(user_answer: list[str], correct_answer: list[str]) -> bool:
     return sorted(user_answer) == sorted(correct_answer)
 
 
-def get_review_text(percentage):
+def get_review_text(percentage: float) -> str:
     if percentage == 100:
         return "Excellent performance. You answered all questions correctly."
     if percentage >= 75:
         return "Very good performance. You have a strong understanding of SQL basics."
     if percentage >= 50:
-        return "Good effort. You understand several concepts, but there is still room for improvement."
+        return (
+            "Good effort. You understand several concepts, but there is still room "
+            "for improvement."
+        )
     return "You need more practice. Review the concepts and try again."
 
 
-def reset_quiz_state():
+def reset_quiz_state() -> None:
     st.session_state.submitted = False
     st.session_state.answers = {}
     st.session_state.sql_answers = {}
@@ -61,7 +93,7 @@ def reset_quiz_state():
     st.session_state.result_data = None
 
 
-def render_question(question_id, question_text):
+def render_question(question_id: int, question_text: str) -> None:
     parts = question_text.split("\n\n", 1)
 
     if len(parts) == 2:
@@ -72,11 +104,22 @@ def render_question(question_id, question_text):
         st.markdown(f"### Q{question_id}. {question_text}")
 
 
+def rows_to_display_data(columns: list[str], rows: list[tuple]) -> list[dict[str, Any]]:
+    if not rows:
+        return []
+
+    if not columns:
+        return [{f"column_{i + 1}": value for i, value in enumerate(row)} for row in rows]
+
+    return [dict(zip(columns, row)) for row in rows]
+
+
 # -----------------------------
 # SQL HELPERS
 # -----------------------------
-def create_in_memory_db(schema_sql, seed_data):
+def create_in_memory_db(schema_sql: str, seed_data: list[dict[str, Any]]) -> sqlite3.Connection:
     conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
     if schema_sql:
@@ -92,47 +135,94 @@ def create_in_memory_db(schema_sql, seed_data):
         columns = list(rows[0].keys())
         placeholders = ", ".join(["?"] * len(columns))
         column_names = ", ".join(columns)
-
         insert_sql = f"INSERT INTO {table} ({column_names}) VALUES ({placeholders})"
 
         for row in rows:
-            values = [row[col] for col in columns]
+            values = [row.get(col) for col in columns]
             cursor.execute(insert_sql, values)
 
     conn.commit()
     return conn
 
 
-def normalize_sql_result(rows):
-    normalized = []
+def strip_sql_comments(query: str) -> str:
+    query = re.sub(r"--.*?$", "", query, flags=re.MULTILINE)
+    query = re.sub(r"/\*.*?\*/", "", query, flags=re.DOTALL)
+    return query.strip()
+
+
+def validate_sql_query(query: str) -> tuple[bool, str | None]:
+    cleaned_query = strip_sql_comments(query)
+
+    if not cleaned_query:
+        return False, "Please enter an SQL query."
+
+    if cleaned_query.count(";") > 1 or (
+        ";" in cleaned_query and not cleaned_query.rstrip().endswith(";")
+    ):
+        return False, "Only a single SQL statement is allowed."
+
+    statement = cleaned_query.rstrip(";").strip()
+    first_word_match = re.match(r"^([a-zA-Z_]+)", statement)
+
+    if not first_word_match:
+        return False, "Unable to detect a valid SQL statement."
+
+    first_word = first_word_match.group(1).lower()
+    if first_word not in READ_ONLY_SQL_KEYWORDS:
+        return False, "Only read-only SELECT queries are allowed."
+
+    lowered = f" {statement.lower()} "
+    for pattern in BLOCKED_SQL_PATTERNS:
+        if re.search(pattern, lowered):
+            return False, "Only safe read-only SQL queries are allowed."
+
+    return True, None
+
+
+def normalize_value(value: Any) -> Any:
+    if isinstance(value, float):
+        return round(value, 6)
+    return value
+
+
+def normalize_sql_result(rows: list[Any]) -> list[tuple[Any, ...]]:
+    normalized: list[tuple[Any, ...]] = []
     for row in rows:
-        normalized.append(tuple(row))
+        if isinstance(row, sqlite3.Row):
+            normalized.append(tuple(normalize_value(value) for value in tuple(row)))
+        elif isinstance(row, (list, tuple)):
+            normalized.append(tuple(normalize_value(value) for value in row))
+        else:
+            normalized.append((normalize_value(row),))
     return normalized
 
 
-def run_sql_query(schema_sql, seed_data, query):
+def run_sql_query(
+    schema_sql: str, seed_data: list[dict[str, Any]], query: str
+) -> dict[str, Any]:
+    is_valid, validation_error = validate_sql_query(query)
+    if not is_valid:
+        return {
+            "success": False,
+            "columns": [],
+            "rows": [],
+            "error": validation_error,
+        }
+
+    conn: sqlite3.Connection | None = None
     try:
         conn = create_in_memory_db(schema_sql, seed_data)
         cursor = conn.cursor()
         cursor.execute(query)
 
-        if query.strip().lower().startswith("select"):
-            rows = cursor.fetchall()
-            columns = [desc[0] for desc in cursor.description] if cursor.description else []
-            conn.close()
-            return {
-                "success": True,
-                "columns": columns,
-                "rows": rows,
-                "error": None,
-            }
+        rows = cursor.fetchall()
+        columns = [desc[0] for desc in cursor.description] if cursor.description else []
 
-        conn.commit()
-        conn.close()
         return {
             "success": True,
-            "columns": [],
-            "rows": [],
+            "columns": columns,
+            "rows": [tuple(row) for row in rows],
             "error": None,
         }
     except Exception as error:
@@ -142,15 +232,39 @@ def run_sql_query(schema_sql, seed_data, query):
             "rows": [],
             "error": str(error),
         }
+    finally:
+        if conn is not None:
+            conn.close()
 
 
-def compare_sql_results(actual_rows, expected_rows):
-    actual_normalized = normalize_sql_result(actual_rows)
-    expected_normalized = normalize_sql_result(expected_rows)
-    return actual_normalized == expected_normalized
+def compare_sql_results(
+    actual_columns: list[str],
+    actual_rows: list[Any],
+    expected_columns: list[str],
+    expected_rows: list[Any],
+) -> tuple[bool, str]:
+    actual_columns_normalized = [col.lower() for col in actual_columns]
+    expected_columns_normalized = [col.lower() for col in expected_columns]
+
+    if expected_columns and actual_columns_normalized != expected_columns_normalized:
+        return (
+            False,
+            "The query ran, but the returned columns did not match the expected columns.",
+        )
+
+    actual_normalized = sorted(normalize_sql_result(actual_rows))
+    expected_normalized = sorted(normalize_sql_result(expected_rows))
+
+    if actual_normalized != expected_normalized:
+        return (
+            False,
+            "The query ran, but the returned rows did not match the expected result.",
+        )
+
+    return True, "Answered correctly."
 
 
-def format_sql_result_for_email(columns, rows):
+def format_sql_result_for_email(columns: list[str], rows: list[Any]) -> str:
     if not rows and not columns:
         return "No result returned"
 
@@ -160,7 +274,8 @@ def format_sql_result_for_email(columns, rows):
         lines.append("-" * 60)
 
     for row in rows:
-        lines.append(" | ".join(str(value) for value in row))
+        row_values = tuple(row) if isinstance(row, sqlite3.Row) else row
+        lines.append(" | ".join(str(value) for value in row_values))
 
     return "\n".join(lines) if lines else "No rows returned"
 
@@ -168,7 +283,14 @@ def format_sql_result_for_email(columns, rows):
 # -----------------------------
 # EMAIL
 # -----------------------------
-def build_email_body(quiz_name, score, total_questions, percentage, review, question_results):
+def build_email_body(
+    quiz_name: str,
+    score: int,
+    total_questions: int,
+    percentage: float,
+    review: str,
+    question_results: list[dict[str, Any]],
+) -> str:
     lines = [
         "=" * 80,
         "SQL QUIZ RESULT",
@@ -239,7 +361,17 @@ def build_email_body(quiz_name, score, total_questions, percentage, review, ques
     return "\n".join(lines)
 
 
-def send_result_email(quiz_name, score, total_questions, percentage, review, question_results):
+def send_result_email(
+    quiz_name: str,
+    score: int,
+    total_questions: int,
+    percentage: float,
+    review: str,
+    question_results: list[dict[str, Any]],
+) -> tuple[bool, str | None]:
+    if not SENDER_EMAIL or not SENDER_APP_PASSWORD or not RECEIVER_EMAILS:
+        return False, "Email settings are missing. Add them in Streamlit secrets or environment variables."
+
     subject = f"SQL Quiz Result - {quiz_name}"
     body = build_email_body(
         quiz_name, score, total_questions, percentage, review, question_results
@@ -342,13 +474,20 @@ for q in questions:
         sql_key = f"{st.session_state.selected_quiz}_sql_{q['id']}"
         run_key = f"{st.session_state.selected_quiz}_sql_run_{q['id']}"
 
+        st.caption("SQL output is hidden until you submit the quiz.")
+
         query_text = st.text_area(
             "Write your SQL query here:",
             value=st.session_state.sql_answers.get(sql_key, ""),
             height=180,
             key=sql_key,
+            placeholder="Example: SELECT name FROM employees WHERE salary > 50000;",
         )
         st.session_state.sql_answers[sql_key] = query_text
+
+        is_valid_query, validation_message = validate_sql_query(query_text)
+        if query_text.strip() and not is_valid_query:
+            st.warning(validation_message)
 
         if st.button("Run Query", key=run_key):
             run_result = run_sql_query(
@@ -358,17 +497,10 @@ for q in questions:
             )
             st.session_state.sql_run_results[run_key] = run_result
 
-        if run_key in st.session_state.sql_run_results:
-            run_result = st.session_state.sql_run_results[run_key]
-
             if run_result["success"]:
-                st.success("Query executed successfully.")
-                if run_result["rows"]:
-                    st.dataframe(run_result["rows"], use_container_width=True)
-                else:
-                    st.info("Query ran successfully. No rows returned.")
+                st.info("Query has been saved. The output will be shown only after you submit the quiz.")
             else:
-                st.error(f"Query execution failed: {run_result['error']}")
+                st.info("The query check has been saved. Any execution error will be shown only after you submit the quiz.")
 
     st.write("---")
 
@@ -419,13 +551,13 @@ if submit_button:
                 failure_reason = "No SQL query entered."
             elif not run_result["success"]:
                 is_correct = False
-                failure_reason = "SQL query execution failed."
+                failure_reason = run_result["error"] or "SQL query execution failed."
             else:
-                is_correct = compare_sql_results(run_result["rows"], expected_rows)
-                failure_reason = (
-                    "Answered correctly."
-                    if is_correct
-                    else "Query result did not match the expected result."
+                is_correct, failure_reason = compare_sql_results(
+                    run_result["columns"],
+                    run_result["rows"],
+                    expected_columns,
+                    expected_rows,
                 )
 
             if is_correct:
@@ -451,7 +583,7 @@ if submit_button:
             )
 
     total_questions = len(questions)
-    percentage = (score / total_questions) * 100
+    percentage = (score / total_questions) * 100 if total_questions else 0
     review = get_review_text(percentage)
 
     st.session_state.result_data = {
@@ -491,7 +623,10 @@ if st.session_state.submitted and st.session_state.result_data:
             st.write(f"**Correct Answer:** {item['correct_answer']}")
         else:
             st.write("**Your SQL Query:**")
-            st.code(item["user_query"] if item["user_query"].strip() else "No query entered", language="sql")
+            st.code(
+                item["user_query"] if item["user_query"].strip() else "No query entered",
+                language="sql",
+            )
 
             st.write("**Expected Result:**")
             st.code(item["expected_result_text"], language="text")
@@ -521,7 +656,7 @@ if st.session_state.submitted and st.session_state.result_data:
             st.session_state.email_sent = True
             st.success("Quiz result email sent automatically.")
         else:
-            st.error(f"Failed to send email: {error_message}")
+            st.warning(f"Email was not sent: {error_message}")
 
     if result["percentage"] == 100:
         st.balloons()
