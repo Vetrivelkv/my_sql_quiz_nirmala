@@ -1,0 +1,577 @@
+[
+  {
+    "id": 1,
+    "type": "single",
+    "question": "What does SQL stand for?",
+    "options": [
+      "Structured Query Language",
+      "Simple Query Language",
+      "Standard Question Language",
+      "Sequential Query Logic"
+    ],
+    "answer": ["Structured Query Language"]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "question": "What is SQL mainly used for?",
+    "options": [
+      "Managing and querying data in databases",
+      "Designing images",
+      "Creating operating systems",
+      "Writing CSS styles"
+    ],
+    "answer": ["Managing and querying data in databases"]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "question": "Why is SQL needed?",
+    "options": [
+      "To store, retrieve, update, and delete data efficiently",
+      "To draw charts only",
+      "To replace hardware",
+      "To create browsers"
+    ],
+    "answer": ["To store, retrieve, update, and delete data efficiently"]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "question": "Which is a real-world example of SQL usage?",
+    "options": [
+      "Retrieving customer orders from an online shopping app",
+      "Painting a wall",
+      "Charging a phone battery",
+      "Typing a Word document"
+    ],
+    "answer": ["Retrieving customer orders from an online shopping app"]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "question": "What is a database in SQL?",
+    "options": [
+      "An organized collection of data",
+      "A single row in a table",
+      "A programming loop",
+      "A type of image file"
+    ],
+    "answer": ["An organized collection of data"]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "question": "What is a table in a database?",
+    "options": [
+      "A structure that stores data in rows and columns",
+      "A command used to print data",
+      "A database backup file",
+      "A type of SQL operator"
+    ],
+    "answer": ["A structure that stores data in rows and columns"]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "question": "What is a column in a table?",
+    "options": [
+      "A field that stores one type of data for all rows",
+      "A full record in the table",
+      "The database name",
+      "A delete command"
+    ],
+    "answer": ["A field that stores one type of data for all rows"]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "question": "What is a row in a table?",
+    "options": [
+      "A single record in the table",
+      "The data type of a column",
+      "The name of a database",
+      "A filter condition"
+    ],
+    "answer": ["A single record in the table"]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "question": "What is DDL in SQL?",
+    "options": [
+      "Data Definition Language",
+      "Data Delete Language",
+      "Database Display Language",
+      "Dynamic Data Logic"
+    ],
+    "answer": ["Data Definition Language"]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "question": "Which of the following is a DDL command?",
+    "options": ["CREATE", "SELECT", "UPDATE", "DELETE"],
+    "answer": ["CREATE"]
+  },
+  {
+    "id": 11,
+    "type": "single",
+    "question": "What is DML in SQL?",
+    "options": [
+      "Data Manipulation Language",
+      "Data Modeling Language",
+      "Database Management Language",
+      "Dynamic Method Language"
+    ],
+    "answer": ["Data Manipulation Language"]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "question": "Which of the following is a DML command?",
+    "options": ["INSERT", "CREATE", "DROP", "ALTER"],
+    "answer": ["INSERT"]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "question": "What is the use of the SELECT command?",
+    "options": [
+      "To retrieve data from a table",
+      "To delete a table",
+      "To create a database",
+      "To change a column name"
+    ],
+    "answer": ["To retrieve data from a table"]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "question": "Which SQL command is used to create a database?",
+    "options": [
+      "CREATE DATABASE",
+      "MAKE DATABASE",
+      "NEW DATABASE",
+      "ADD DATABASE"
+    ],
+    "answer": ["CREATE DATABASE"]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "question": "Which command is commonly used in MySQL to view all databases?",
+    "options": [
+      "SHOW DATABASES;",
+      "SELECT DATABASES;",
+      "GET DATABASES;",
+      "VIEW DATABASES;"
+    ],
+    "answer": ["SHOW DATABASES;"]
+  },
+  {
+    "id": 16,
+    "type": "single",
+    "question": "Which command is used to select a database in MySQL?",
+    "options": [
+      "USE database_name;",
+      "SELECT database_name;",
+      "OPEN database_name;",
+      "CHOOSE database_name;"
+    ],
+    "answer": ["USE database_name;"]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "question": "Which SQL command is used to create a table?",
+    "options": ["CREATE TABLE", "ADD TABLE", "MAKE TABLE", "NEW TABLE"],
+    "answer": ["CREATE TABLE"]
+  },
+  {
+    "id": 18,
+    "type": "single",
+    "question": "Why is it necessary to define data types for columns?",
+    "options": [
+      "To ensure correct kind of data is stored in each column",
+      "To make SQL colorful",
+      "To increase monitor speed",
+      "To avoid writing table names"
+    ],
+    "answer": ["To ensure correct kind of data is stored in each column"]
+  },
+  {
+    "id": 19,
+    "type": "single",
+    "question": "What does the INT data type store?",
+    "options": ["Whole numbers", "Text values", "Dates only", "Images"],
+    "answer": ["Whole numbers"]
+  },
+  {
+    "id": 20,
+    "type": "single",
+    "question": "What does the VARCHAR data type store?",
+    "options": [
+      "Variable-length text",
+      "Only decimal numbers",
+      "Only boolean values",
+      "Only timestamps"
+    ],
+    "answer": ["Variable-length text"]
+  },
+  {
+    "id": 21,
+    "type": "single",
+    "question": "Which SQL command is used to insert rows into a table?",
+    "options": ["INSERT INTO", "ADD INTO", "PUT INTO", "APPEND ROW"],
+    "answer": ["INSERT INTO"]
+  },
+  {
+    "id": 22,
+    "type": "single",
+    "question": "Which SQL command is used to update existing records?",
+    "options": ["UPDATE", "MODIFY", "CHANGE", "ALTER ROW"],
+    "answer": ["UPDATE"]
+  },
+  {
+    "id": 23,
+    "type": "single",
+    "question": "Which clause is usually used with UPDATE to change only specific rows?",
+    "options": ["WHERE", "ORDER BY", "GROUP BY", "VALUES"],
+    "answer": ["WHERE"]
+  },
+  {
+    "id": 24,
+    "type": "single",
+    "question": "Which SQL command is used to delete specific rows from a table?",
+    "options": ["DELETE FROM", "REMOVE TABLE", "DROP ROW", "ERASE FROM"],
+    "answer": ["DELETE FROM"]
+  },
+  {
+    "id": 25,
+    "type": "single",
+    "question": "Which SQL statement removes all rows from a table but keeps the table structure?",
+    "options": [
+      "DELETE FROM table_name;",
+      "DROP TABLE table_name;",
+      "REMOVE TABLE table_name;",
+      "ERASE table_name;"
+    ],
+    "answer": ["DELETE FROM table_name;"]
+  },
+  {
+    "id": 26,
+    "type": "single",
+    "question": "Which SQL command is used to delete a table from a database?",
+    "options": ["DROP TABLE", "DELETE TABLE", "REMOVE TABLE", "TRUNCATE TABLE"],
+    "answer": ["DROP TABLE"]
+  },
+  {
+    "id": 27,
+    "type": "sql",
+    "question": "Write a query to fetch all columns from the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "age", "city"],
+    "expected_rows": [
+      [1, "Anu", 20, "Chennai"],
+      [2, "Ravi", 21, "Madurai"]
+    ]
+  },
+  {
+    "id": 28,
+    "type": "sql",
+    "question": "Write a query to fetch only the name column from the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": ["name"],
+    "expected_rows": [["Anu"], ["Ravi"]]
+  },
+  {
+    "id": 29,
+    "type": "sql",
+    "question": "Write a query to fetch students whose age is greater than 20.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" },
+          { "id": 3, "name": "Sara", "age": 19, "city": "Trichy" }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "age", "city"],
+    "expected_rows": [[2, "Ravi", 21, "Madurai"]]
+  },
+  {
+    "id": 30,
+    "type": "sql",
+    "question": "Write a query to insert a new row (3, 'Kavi', 22, 'Salem') into the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 31,
+    "type": "sql",
+    "question": "Write a query to update the city of the student with id = 2 to 'Coimbatore'.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 32,
+    "type": "sql",
+    "question": "Write a query to update both age = 22 and city = 'Erode' for the student with id = 1.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 33,
+    "type": "sql",
+    "question": "Write a query to delete the row where id = 2 from the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 34,
+    "type": "sql",
+    "question": "Write a query to delete all rows from the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 35,
+    "type": "sql",
+    "question": "Write a query to fetch only id and name columns from the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name"],
+    "expected_rows": [
+      [1, "Anu"],
+      [2, "Ravi"]
+    ]
+  },
+  {
+    "id": 36,
+    "type": "sql",
+    "question": "Write a query to fetch students who live in 'Chennai'.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, city TEXT);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          { "id": 1, "name": "Anu", "age": 20, "city": "Chennai" },
+          { "id": 2, "name": "Ravi", "age": 21, "city": "Madurai" },
+          { "id": 3, "name": "Sara", "age": 19, "city": "Chennai" }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "age", "city"],
+    "expected_rows": [
+      [1, "Anu", 20, "Chennai"],
+      [3, "Sara", 19, "Chennai"]
+    ]
+  },
+  {
+    "id": 37,
+    "type": "sql",
+    "question": "Write a query to fetch all rows from the employees table.",
+    "schema_sql": "CREATE TABLE employees (emp_id INTEGER, emp_name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "emp_id": 1, "emp_name": "Alice", "salary": 50000 },
+          { "emp_id": 2, "emp_name": "Bob", "salary": 60000 }
+        ]
+      }
+    ],
+    "expected_columns": ["emp_id", "emp_name", "salary"],
+    "expected_rows": [
+      [1, "Alice", 50000],
+      [2, "Bob", 60000]
+    ]
+  },
+  {
+    "id": 38,
+    "type": "sql",
+    "question": "Write a query to fetch only emp_name from the employees table.",
+    "schema_sql": "CREATE TABLE employees (emp_id INTEGER, emp_name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "emp_id": 1, "emp_name": "Alice", "salary": 50000 },
+          { "emp_id": 2, "emp_name": "Bob", "salary": 60000 }
+        ]
+      }
+    ],
+    "expected_columns": ["emp_name"],
+    "expected_rows": [["Alice"], ["Bob"]]
+  },
+  {
+    "id": 39,
+    "type": "sql",
+    "question": "Write a query to fetch employees whose salary is less than 60000.",
+    "schema_sql": "CREATE TABLE employees (emp_id INTEGER, emp_name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "emp_id": 1, "emp_name": "Alice", "salary": 50000 },
+          { "emp_id": 2, "emp_name": "Bob", "salary": 60000 },
+          { "emp_id": 3, "emp_name": "Cara", "salary": 45000 }
+        ]
+      }
+    ],
+    "expected_columns": ["emp_id", "emp_name", "salary"],
+    "expected_rows": [
+      [1, "Alice", 50000],
+      [3, "Cara", 45000]
+    ]
+  },
+  {
+    "id": 40,
+    "type": "sql",
+    "question": "Write a query to insert a new row (4, 'David', 55000) into the employees table.",
+    "schema_sql": "CREATE TABLE employees (emp_id INTEGER, emp_name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "emp_id": 1, "emp_name": "Alice", "salary": 50000 },
+          { "emp_id": 2, "emp_name": "Bob", "salary": 60000 }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 41,
+    "type": "single",
+    "question": "What is DDL in SQL?",
+    "options": [
+      "Data Definition Language used to define database structure",
+      "Data Manipulation Language used to modify data",
+      "Data Display Language used to show data",
+      "Data Delete Language used to remove data"
+    ],
+    "answer": ["Data Definition Language used to define database structure"]
+  },
+  {
+    "id": 42,
+    "type": "single",
+    "question": "What is DML in SQL?",
+    "options": [
+      "Data Manipulation Language used to manage data inside tables",
+      "Data Modeling Language used to design UI",
+      "Data Management Logic used in coding",
+      "Data Migration Language"
+    ],
+    "answer": ["Data Manipulation Language used to manage data inside tables"]
+  },
+  {
+    "id": 43,
+    "type": "single",
+    "question": "You are creating a new table for storing customer details in a shopping application. Which type of SQL operation is this?",
+    "options": ["DDL", "DML", "SELECT", "WHERE"],
+    "answer": ["DDL"]
+  },
+  {
+    "id": 44,
+    "type": "single",
+    "question": "You are updating a customer's address in a table. Which type of SQL operation is this?",
+    "options": ["DML", "DDL", "CREATE", "DROP"],
+    "answer": ["DML"]
+  },
+  {
+    "id": 45,
+    "type": "single",
+    "question": "What is a clause in SQL and why is it needed?",
+    "options": [
+      "A clause is a condition used to filter or control data in a query",
+      "A clause is a database itself",
+      "A clause is a type of table",
+      "A clause is used only for deleting databases"
+    ],
+    "answer": [
+      "A clause is a condition used to filter or control data in a query"
+    ]
+  }
+]
