@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "type": "single",
+    "question": "Which SQL statement is used to create a table with column definitions?",
+    "options": [
+      "CREATE TABLE table_name (column_name data_type);",
+      "MAKE TABLE table_name;",
+      "NEW TABLE table_name;",
+      "ADD TABLE table_name;"
+    ],
+    "answer": ["CREATE TABLE table_name (column_name data_type);"]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "question": "What does CTAS mean in SQL?",
+    "options": [
+      "Create Table As Select",
+      "Create Temp As Structure",
+      "Column Table And Schema",
+      "Create Table And Store"
+    ],
+    "answer": ["Create Table As Select"]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "question": "What is a constraint in a table?",
+    "options": [
+      "A rule applied on columns to control valid data",
+      "A command used to fetch rows",
+      "A way to rename tables",
+      "A type of SQL join"
+    ],
+    "answer": ["A rule applied on columns to control valid data"]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "question": "Which of the following is an example of a table constraint?",
+    "options": ["PRIMARY KEY", "SELECT", "ORDER BY", "DESC"],
+    "answer": ["PRIMARY KEY"]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "question": "Which SQL statement is used to create a temporary table?",
+    "options": [
+      "CREATE TEMPORARY TABLE table_name (...);",
+      "CREATE TABLE TEMP table_name (...);",
+      "MAKE TEMP TABLE table_name (...);",
+      "NEW TEMPORARY table_name (...);"
+    ],
+    "answer": ["CREATE TEMPORARY TABLE table_name (...);"]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "question": "What is the validity of a temporary table in most SQL systems?",
+    "options": [
+      "It exists only for the current session or connection",
+      "It exists forever like a normal table",
+      "It exists only for one query result row",
+      "It exists only until one INSERT happens"
+    ],
+    "answer": ["It exists only for the current session or connection"]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "question": "What is the purpose of the WITH clause in SQL?",
+    "options": [
+      "To define a temporary named result set for use in a query",
+      "To delete rows from a table",
+      "To rename a database",
+      "To describe a table"
+    ],
+    "answer": ["To define a temporary named result set for use in a query"]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "question": "What is a CTE in SQL?",
+    "options": [
+      "Common Table Expression",
+      "Column Type Expression",
+      "Create Table Entry",
+      "Conditional Table Execution"
+    ],
+    "answer": ["Common Table Expression"]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "question": "What is ALTER used for in SQL?",
+    "options": [
+      "To modify the structure of an existing table",
+      "To fetch rows from a table",
+      "To sort query results",
+      "To insert new rows"
+    ],
+    "answer": ["To modify the structure of an existing table"]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "question": "What is the use of DESC table_name command?",
+    "options": [
+      "To view the structure of a table",
+      "To delete a table",
+      "To sort rows in descending order",
+      "To update table values"
+    ],
+    "answer": ["To view the structure of a table"]
+  },
+  {
+    "id": 11,
+    "type": "single",
+    "question": "What is a primary key in SQL?",
+    "options": [
+      "A column that uniquely identifies each row in a table",
+      "A column that stores only text values",
+      "A command used to create indexes",
+      "A clause used to sort data"
+    ],
+    "answer": ["A column that uniquely identifies each row in a table"]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "question": "Why is a primary key important?",
+    "options": [
+      "It prevents duplicate and NULL values in that key column",
+      "It makes all columns text type",
+      "It automatically sorts all rows",
+      "It deletes duplicate tables"
+    ],
+    "answer": ["It prevents duplicate and NULL values in that key column"]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "question": "What is the use of the WHERE clause?",
+    "options": [
+      "To filter rows based on a condition",
+      "To sort rows",
+      "To create a table",
+      "To rename a column"
+    ],
+    "answer": ["To filter rows based on a condition"]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "question": "What is the use of ORDER BY?",
+    "options": [
+      "To sort query results",
+      "To group rows",
+      "To insert records",
+      "To define constraints"
+    ],
+    "answer": ["To sort query results"]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "question": "What does AND do in a WHERE condition?",
+    "options": [
+      "It requires all conditions to be true",
+      "It requires any one condition to be true",
+      "It reverses a condition",
+      "It sorts values alphabetically"
+    ],
+    "answer": ["It requires all conditions to be true"]
+  },
+  {
+    "id": 16,
+    "type": "sql",
+    "question": "Write a query to create a table named students with columns id INT, name VARCHAR(50), and age INT.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 17,
+    "type": "sql",
+    "question": "Write a query to create a table named employees_copy using CTAS from the employees table.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Alice", "department": "HR" },
+          { "id": 2, "name": "Bob", "department": "IT" }
+        ]
+      }
+    ],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 18,
+    "type": "sql",
+    "question": "Write a query to create a temporary table named temp_students with columns id INT and name VARCHAR(50).",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 19,
+    "type": "sql",
+    "question": "Write a query using WITH clause to create a CTE named high_salary that selects employees with salary greater than 50000 from the employees table.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Alice", "salary": 50000 },
+          { "id": 2, "name": "Bob", "salary": 65000 },
+          { "id": 3, "name": "Cara", "salary": 70000 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "salary"],
+    "expected_rows": [
+      [2, "Bob", 65000],
+      [3, "Cara", 70000]
+    ]
+  },
+  {
+    "id": 20,
+    "type": "sql",
+    "question": "Write a query to add a new column email TEXT to the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 21,
+    "type": "sql",
+    "question": "Write a query to rename the column name to full_name in the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 22,
+    "type": "sql",
+    "question": "Write a query to rename the table students to college_students.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 23,
+    "type": "sql",
+    "question": "Write a query to fetch all rows from the products table.",
+    "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, price INTEGER);",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          { "id": 1, "product_name": "Pen", "price": 10 },
+          { "id": 2, "product_name": "Book", "price": 50 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "product_name", "price"],
+    "expected_rows": [
+      [1, "Pen", 10],
+      [2, "Book", 50]
+    ]
+  },
+  {
+    "id": 24,
+    "type": "sql",
+    "question": "Write a query to fetch only product_name from the products table where price is greater than 20.",
+    "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, price INTEGER);",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          { "id": 1, "product_name": "Pen", "price": 10 },
+          { "id": 2, "product_name": "Book", "price": 50 },
+          { "id": 3, "product_name": "Bag", "price": 100 }
+        ]
+      }
+    ],
+    "expected_columns": ["product_name"],
+    "expected_rows": [["Book"], ["Bag"]]
+  },
+  {
+    "id": 25,
+    "type": "sql",
+    "question": "Write a query to fetch all rows from the products table ordered by price in ascending order.",
+    "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, price INTEGER);",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          { "id": 1, "product_name": "Pen", "price": 10 },
+          { "id": 2, "product_name": "Book", "price": 50 },
+          { "id": 3, "product_name": "Bag", "price": 100 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "product_name", "price"],
+    "expected_rows": [
+      [1, "Pen", 10],
+      [2, "Book", 50],
+      [3, "Bag", 100]
+    ]
+  },
+  {
+    "id": 26,
+    "type": "sql",
+    "question": "Write a query to fetch all rows from the products table ordered by price in descending order.",
+    "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, price INTEGER);",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          { "id": 1, "product_name": "Pen", "price": 10 },
+          { "id": 2, "product_name": "Book", "price": 50 },
+          { "id": 3, "product_name": "Bag", "price": 100 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "product_name", "price"],
+    "expected_rows": [
+      [3, "Bag", 100],
+      [2, "Book", 50],
+      [1, "Pen", 10]
+    ]
+  },
+  {
+    "id": 27,
+    "type": "sql",
+    "question": "Write a query to fetch employees whose salary is greater than 50000 and department is 'IT'.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Alice", "department": "HR", "salary": 50000 },
+          { "id": 2, "name": "Bob", "department": "IT", "salary": 65000 },
+          { "id": 3, "name": "Cara", "department": "IT", "salary": 45000 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "department", "salary"],
+    "expected_rows": [[2, "Bob", "IT", 65000]]
+  },
+  {
+    "id": 28,
+    "type": "sql",
+    "question": "Write a query to fetch all employees from department 'IT' ordered by salary ascending.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Alice", "department": "HR", "salary": 50000 },
+          { "id": 2, "name": "Bob", "department": "IT", "salary": 65000 },
+          { "id": 3, "name": "Cara", "department": "IT", "salary": 45000 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "department", "salary"],
+    "expected_rows": [
+      [3, "Cara", "IT", 45000],
+      [2, "Bob", "IT", 65000]
+    ]
+  },
+  {
+    "id": 29,
+    "type": "sql",
+    "question": "Write a query to fetch all employees whose department is 'IT' and salary is greater than 40000 ordered by salary descending.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Alice", "department": "HR", "salary": 50000 },
+          { "id": 2, "name": "Bob", "department": "IT", "salary": 65000 },
+          { "id": 3, "name": "Cara", "department": "IT", "salary": 45000 },
+          { "id": 4, "name": "Dan", "department": "IT", "salary": 35000 }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "department", "salary"],
+    "expected_rows": [
+      [2, "Bob", "IT", 65000],
+      [3, "Cara", "IT", 45000]
+    ]
+  },
+  {
+    "id": 30,
+    "type": "sql",
+    "question": "Write a query to create a table named departments with department_id INT PRIMARY KEY and department_name VARCHAR(50).",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  }
+]

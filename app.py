@@ -24,8 +24,8 @@ RECEIVER_EMAILS = [
 # QUIZ CONFIG
 # -----------------------------
 QUIZ_FILES = {
-    "SQL Quiz 1 - Basics": "sql_quiz_1.json",
-    "SQL Quiz 2 - Queries": "sql_quiz_2.json",
+    "SQL Quiz 1 - Basics-1": "sql_quiz_1.json",
+    "SQL Quiz 2 - Basics-2": "sql_quiz_2.json",
 }
 
 
