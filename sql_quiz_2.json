@@ -177,37 +177,92 @@
   {
     "id": 16,
     "type": "sql",
-    "question": "Write a query to create a table named students with columns id INT, name VARCHAR(50), and age INT.",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show all students with their id, name, and age.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Anu",
+            "age": 20
+          },
+          {
+            "id": 2,
+            "name": "Bala",
+            "age": 21
+          },
+          {
+            "id": 3,
+            "name": "Cathy",
+            "age": 19
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "age"],
+    "expected_rows": [
+      [1, "Anu", 20],
+      [2, "Bala", 21],
+      [3, "Cathy", 19]
+    ]
   },
   {
     "id": 17,
     "type": "sql",
-    "question": "Write a query to create a table named employees_copy using CTAS from the employees table.",
+    "question": "Show all rows from the employees table.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT);",
     "seed_data": [
       {
         "table": "employees",
         "rows": [
-          { "id": 1, "name": "Alice", "department": "HR" },
-          { "id": 2, "name": "Bob", "department": "IT" }
+          {
+            "id": 1,
+            "name": "Alice",
+            "department": "HR"
+          },
+          {
+            "id": 2,
+            "name": "Bob",
+            "department": "IT"
+          }
         ]
       }
     ],
-    "expected_columns": [],
-    "expected_rows": []
+    "expected_columns": ["id", "name", "department"],
+    "expected_rows": [
+      [1, "Alice", "HR"],
+      [2, "Bob", "IT"]
+    ]
   },
   {
     "id": 18,
     "type": "sql",
-    "question": "Write a query to create a temporary table named temp_students with columns id INT and name VARCHAR(50).",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show only the id and name columns from the students table.",
+    "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Arun",
+            "age": 18
+          },
+          {
+            "id": 2,
+            "name": "Divya",
+            "age": 20
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name"],
+    "expected_rows": [
+      [1, "Arun"],
+      [2, "Divya"]
+    ]
   },
   {
     "id": 19,
@@ -218,9 +273,21 @@
       {
         "table": "employees",
         "rows": [
-          { "id": 1, "name": "Alice", "salary": 50000 },
-          { "id": 2, "name": "Bob", "salary": 65000 },
-          { "id": 3, "name": "Cara", "salary": 70000 }
+          {
+            "id": 1,
+            "name": "Alice",
+            "salary": 50000
+          },
+          {
+            "id": 2,
+            "name": "Bob",
+            "salary": 65000
+          },
+          {
+            "id": 3,
+            "name": "Cara",
+            "salary": 70000
+          }
         ]
       }
     ],
@@ -233,29 +300,83 @@
   {
     "id": 20,
     "type": "sql",
-    "question": "Write a query to add a new column email TEXT to the students table.",
+    "question": "Show the id and name of all students.",
     "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Kiran",
+            "age": 22
+          },
+          {
+            "id": 2,
+            "name": "Meena",
+            "age": 23
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name"],
+    "expected_rows": [
+      [1, "Kiran"],
+      [2, "Meena"]
+    ]
   },
   {
     "id": 21,
     "type": "sql",
-    "question": "Write a query to rename the column name to full_name in the students table.",
+    "question": "Show student names as full_name from the students table.",
     "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Latha",
+            "age": 20
+          },
+          {
+            "id": 2,
+            "name": "Ravi",
+            "age": 21
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["full_name"],
+    "expected_rows": [["Latha"], ["Ravi"]]
   },
   {
     "id": 22,
     "type": "sql",
-    "question": "Write a query to rename the table students to college_students.",
+    "question": "Show all rows from the students table.",
     "schema_sql": "CREATE TABLE students (id INTEGER, name TEXT, age INTEGER);",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "seed_data": [
+      {
+        "table": "students",
+        "rows": [
+          {
+            "id": 1,
+            "name": "Nila",
+            "age": 18
+          },
+          {
+            "id": 2,
+            "name": "Omar",
+            "age": 19
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["id", "name", "age"],
+    "expected_rows": [
+      [1, "Nila", 18],
+      [2, "Omar", 19]
+    ]
   },
   {
     "id": 23,
@@ -266,8 +387,16 @@
       {
         "table": "products",
         "rows": [
-          { "id": 1, "product_name": "Pen", "price": 10 },
-          { "id": 2, "product_name": "Book", "price": 50 }
+          {
+            "id": 1,
+            "product_name": "Pen",
+            "price": 10
+          },
+          {
+            "id": 2,
+            "product_name": "Book",
+            "price": 50
+          }
         ]
       }
     ],
@@ -286,9 +415,21 @@
       {
         "table": "products",
         "rows": [
-          { "id": 1, "product_name": "Pen", "price": 10 },
-          { "id": 2, "product_name": "Book", "price": 50 },
-          { "id": 3, "product_name": "Bag", "price": 100 }
+          {
+            "id": 1,
+            "product_name": "Pen",
+            "price": 10
+          },
+          {
+            "id": 2,
+            "product_name": "Book",
+            "price": 50
+          },
+          {
+            "id": 3,
+            "product_name": "Bag",
+            "price": 100
+          }
         ]
       }
     ],
@@ -304,9 +445,21 @@
       {
         "table": "products",
         "rows": [
-          { "id": 1, "product_name": "Pen", "price": 10 },
-          { "id": 2, "product_name": "Book", "price": 50 },
-          { "id": 3, "product_name": "Bag", "price": 100 }
+          {
+            "id": 1,
+            "product_name": "Pen",
+            "price": 10
+          },
+          {
+            "id": 2,
+            "product_name": "Book",
+            "price": 50
+          },
+          {
+            "id": 3,
+            "product_name": "Bag",
+            "price": 100
+          }
         ]
       }
     ],
@@ -326,9 +479,21 @@
       {
         "table": "products",
         "rows": [
-          { "id": 1, "product_name": "Pen", "price": 10 },
-          { "id": 2, "product_name": "Book", "price": 50 },
-          { "id": 3, "product_name": "Bag", "price": 100 }
+          {
+            "id": 1,
+            "product_name": "Pen",
+            "price": 10
+          },
+          {
+            "id": 2,
+            "product_name": "Book",
+            "price": 50
+          },
+          {
+            "id": 3,
+            "product_name": "Bag",
+            "price": 100
+          }
         ]
       }
     ],
@@ -348,9 +513,24 @@
       {
         "table": "employees",
         "rows": [
-          { "id": 1, "name": "Alice", "department": "HR", "salary": 50000 },
-          { "id": 2, "name": "Bob", "department": "IT", "salary": 65000 },
-          { "id": 3, "name": "Cara", "department": "IT", "salary": 45000 }
+          {
+            "id": 1,
+            "name": "Alice",
+            "department": "HR",
+            "salary": 50000
+          },
+          {
+            "id": 2,
+            "name": "Bob",
+            "department": "IT",
+            "salary": 65000
+          },
+          {
+            "id": 3,
+            "name": "Cara",
+            "department": "IT",
+            "salary": 45000
+          }
         ]
       }
     ],
@@ -366,9 +546,24 @@
       {
         "table": "employees",
         "rows": [
-          { "id": 1, "name": "Alice", "department": "HR", "salary": 50000 },
-          { "id": 2, "name": "Bob", "department": "IT", "salary": 65000 },
-          { "id": 3, "name": "Cara", "department": "IT", "salary": 45000 }
+          {
+            "id": 1,
+            "name": "Alice",
+            "department": "HR",
+            "salary": 50000
+          },
+          {
+            "id": 2,
+            "name": "Bob",
+            "department": "IT",
+            "salary": 65000
+          },
+          {
+            "id": 3,
+            "name": "Cara",
+            "department": "IT",
+            "salary": 45000
+          }
         ]
       }
     ],
@@ -387,10 +582,30 @@
       {
         "table": "employees",
         "rows": [
-          { "id": 1, "name": "Alice", "department": "HR", "salary": 50000 },
-          { "id": 2, "name": "Bob", "department": "IT", "salary": 65000 },
-          { "id": 3, "name": "Cara", "department": "IT", "salary": 45000 },
-          { "id": 4, "name": "Dan", "department": "IT", "salary": 35000 }
+          {
+            "id": 1,
+            "name": "Alice",
+            "department": "HR",
+            "salary": 50000
+          },
+          {
+            "id": 2,
+            "name": "Bob",
+            "department": "IT",
+            "salary": 65000
+          },
+          {
+            "id": 3,
+            "name": "Cara",
+            "department": "IT",
+            "salary": 45000
+          },
+          {
+            "id": 4,
+            "name": "Dan",
+            "department": "IT",
+            "salary": 35000
+          }
         ]
       }
     ],
@@ -403,10 +618,32 @@
   {
     "id": 30,
     "type": "sql",
-    "question": "Write a query to create a table named departments with department_id INT PRIMARY KEY and department_name VARCHAR(50).",
-    "schema_sql": "",
-    "seed_data": [],
-    "expected_columns": [],
-    "expected_rows": []
+    "question": "Show the department_id and department_name from the departments table.",
+    "schema_sql": "CREATE TABLE departments (department_id INTEGER PRIMARY KEY, department_name TEXT);",
+    "seed_data": [
+      {
+        "table": "departments",
+        "rows": [
+          {
+            "department_id": 1,
+            "department_name": "HR"
+          },
+          {
+            "department_id": 2,
+            "department_name": "IT"
+          },
+          {
+            "department_id": 3,
+            "department_name": "Finance"
+          }
+        ]
+      }
+    ],
+    "expected_columns": ["department_id", "department_name"],
+    "expected_rows": [
+      [1, "HR"],
+      [2, "IT"],
+      [3, "Finance"]
+    ]
   }
 ]

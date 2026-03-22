@@ -1,6 +1,4 @@
 import json
-import os
-from dotenv import load_dotenv
 import re
 import smtplib
 import sqlite3
@@ -9,24 +7,15 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import Any
 
+import os
 import streamlit as st
 
-st.set_page_config(page_title="SQL Quiz App", page_icon="🗄️", layout="wide")
+SENDER_EMAIL = st.secrets["SENDER_EMAIL"]
+SENDER_APP_PASSWORD = st.secrets["SENDER_APP_PASSWORD"]
+RECEIVER_EMAILS = st.secrets["RECEIVER_EMAILS"]
 
-
-load_dotenv()
-
-def _get_secret_or_env(key, default=None):
-    try:
-        return st.secrets.get(key, os.getenv(key, default))
-    except Exception:
-        return os.getenv(key, default)
-
-SENDER_EMAIL = _get_secret_or_env("SENDER_EMAIL", "")
-SENDER_APP_PASSWORD = _get_secret_or_env("SENDER_APP_PASSWORD", "")
-RECEIVER_EMAILS_RAW = _get_secret_or_env("RECEIVER_EMAILS", "")
-RECEIVER_EMAILS = [email.strip() for email in RECEIVER_EMAILS_RAW.split(",") if email.strip()]
-# -----------------------------
+# optional: root-level secrets also exist as env vars
+sender_email_from_env = os.environ.get("SENDER_EMAIL")# -----------------------------
 # QUIZ CONFIG
 # -----------------------------
 QUIZ_FILES = {
