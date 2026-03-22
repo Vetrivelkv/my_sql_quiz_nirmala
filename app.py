@@ -26,6 +26,7 @@ RECEIVER_EMAILS = [
 QUIZ_FILES = {
     "SQL Quiz 1 - Basics-1": "sql_quiz_1.json",
     "SQL Quiz 2 - Basics-2": "sql_quiz_2.json",
+    "SQL Quiz 3 - Basics-3": "sql_quiz_3.json",
 }
 
 

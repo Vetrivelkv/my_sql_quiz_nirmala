@@ -1,0 +1,359 @@
+[
+  {
+    "id": 1,
+    "type": "single",
+    "question": "What is a constraint in SQL?",
+    "options": [
+      "A rule applied to columns to enforce valid data",
+      "A query to fetch data",
+      "A type of database",
+      "A command to delete rows"
+    ],
+    "answer": ["A rule applied to columns to enforce valid data"]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "question": "What is a column constraint?",
+    "options": [
+      "A rule applied to a specific column",
+      "A rule applied to an entire database",
+      "A query condition",
+      "A type of join"
+    ],
+    "answer": ["A rule applied to a specific column"]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "question": "What is a PRIMARY KEY constraint?",
+    "options": [
+      "A column that uniquely identifies each row",
+      "A column that allows duplicates",
+      "A column used only for sorting",
+      "A column used for grouping"
+    ],
+    "answer": ["A column that uniquely identifies each row"]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "question": "Can a PRIMARY KEY accept NULL values?",
+    "options": ["No", "Yes", "Sometimes", "Only once"],
+    "answer": ["No"]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "question": "Can a PRIMARY KEY have duplicate values?",
+    "options": ["No", "Yes", "Only two duplicates", "Only if indexed"],
+    "answer": ["No"]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "question": "What is a composite key?",
+    "options": [
+      "A primary key made of multiple columns",
+      "A single unique column",
+      "A foreign key",
+      "A temporary key"
+    ],
+    "answer": ["A primary key made of multiple columns"]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "question": "What is UNIQUE constraint?",
+    "options": [
+      "Ensures all values in a column are unique",
+      "Deletes duplicate rows",
+      "Sorts data",
+      "Groups data"
+    ],
+    "answer": ["Ensures all values in a column are unique"]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "question": "Can UNIQUE constraint allow NULL values?",
+    "options": ["Yes", "No", "Only once", "Only twice"],
+    "answer": ["Yes"]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "question": "What is NOT NULL constraint?",
+    "options": [
+      "Ensures column cannot have NULL values",
+      "Allows only numbers",
+      "Deletes rows",
+      "Creates tables"
+    ],
+    "answer": ["Ensures column cannot have NULL values"]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "question": "What is CHECK constraint?",
+    "options": [
+      "Validates data based on a condition",
+      "Deletes invalid rows",
+      "Creates indexes",
+      "Sorts data"
+    ],
+    "answer": ["Validates data based on a condition"]
+  },
+  {
+    "id": 11,
+    "type": "single",
+    "question": "What is a FOREIGN KEY?",
+    "options": [
+      "A column that links to another table",
+      "A unique identifier",
+      "A sorting column",
+      "A default value"
+    ],
+    "answer": ["A column that links to another table"]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "question": "What is IF EXISTS used for?",
+    "options": [
+      "To avoid errors when dropping objects",
+      "To insert data",
+      "To sort data",
+      "To filter rows"
+    ],
+    "answer": ["To avoid errors when dropping objects"]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "question": "What happens when dropping a table with foreign key dependency?",
+    "options": [
+      "It may fail unless dependencies are removed",
+      "It always succeeds",
+      "It deletes only rows",
+      "It renames table"
+    ],
+    "answer": ["It may fail unless dependencies are removed"]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "question": "What happens when deleting a parent record with foreign key?",
+    "options": [
+      "It may fail or cascade based on constraint",
+      "It always deletes child rows",
+      "It renames rows",
+      "It updates values"
+    ],
+    "answer": ["It may fail or cascade based on constraint"]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "question": "What is ON DELETE CASCADE?",
+    "options": [
+      "Automatically deletes child rows",
+      "Prevents deletion",
+      "Renames rows",
+      "Sorts data"
+    ],
+    "answer": ["Automatically deletes child rows"]
+  },
+  {
+    "id": 16,
+    "type": "single",
+    "question": "What is DEFAULT constraint?",
+    "options": [
+      "Assigns default value if none provided",
+      "Deletes rows",
+      "Creates table",
+      "Sorts data"
+    ],
+    "answer": ["Assigns default value if none provided"]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "question": "What is soft delete?",
+    "options": [
+      "Marking records as deleted instead of removing them",
+      "Deleting records permanently",
+      "Renaming records",
+      "Sorting records"
+    ],
+    "answer": ["Marking records as deleted instead of removing them"]
+  },
+  {
+    "id": 18,
+    "type": "sql",
+    "question": "Create a table users with id as PRIMARY KEY.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 19,
+    "type": "sql",
+    "question": "Create a table orders with composite key (order_id, user_id).",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 20,
+    "type": "sql",
+    "question": "Create a table with UNIQUE constraint on email.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 21,
+    "type": "sql",
+    "question": "Create a table employees with NOT NULL constraint on name.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 22,
+    "type": "sql",
+    "question": "Create a table products with CHECK constraint price > 0.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 23,
+    "type": "sql",
+    "question": "Create a table orders with foreign key user_id referencing users(id).",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY);",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 24,
+    "type": "sql",
+    "question": "Drop table users if exists.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 25,
+    "type": "sql",
+    "question": "Delete a user record with id = 1.",
+    "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY);",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 26,
+    "type": "sql",
+    "question": "Create two tables drivers and rides with foreign key relationship.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 27,
+    "type": "sql",
+    "question": "Insert a record into drivers table.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 28,
+    "type": "sql",
+    "question": "Insert a record into rides table referencing drivers.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 29,
+    "type": "sql",
+    "question": "Select all rows from drivers and rides tables.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 30,
+    "type": "sql",
+    "question": "Delete a record safely from parent table with foreign key constraint.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 31,
+    "type": "sql",
+    "question": "Create table with ON DELETE CASCADE.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 32,
+    "type": "sql",
+    "question": "Create a table with DEFAULT value for status column.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 33,
+    "type": "sql",
+    "question": "Create table with isDeleted column for soft delete.",
+    "schema_sql": "",
+    "seed_data": [],
+    "expected_columns": [],
+    "expected_rows": []
+  },
+  {
+    "id": 34,
+    "type": "single",
+    "question": "In real world, which is best example of FOREIGN KEY?",
+    "options": [
+      "Orders linked to Users",
+      "Sorting a list",
+      "Printing a value",
+      "Updating a variable"
+    ],
+    "answer": ["Orders linked to Users"]
+  },
+  {
+    "id": 35,
+    "type": "single",
+    "question": "Which scenario best explains UNIQUE constraint?",
+    "options": [
+      "Email IDs in a system must be unique",
+      "User names can repeat",
+      "Sorting salaries",
+      "Deleting rows"
+    ],
+    "answer": ["Email IDs in a system must be unique"]
+  }
+]
