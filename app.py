@@ -472,7 +472,7 @@ for q in questions:
         sql_key = f"{st.session_state.selected_quiz}_sql_{q['id']}"
         run_key = f"{st.session_state.selected_quiz}_sql_run_{q['id']}"
 
-        st.caption("Expected answers and SQL output are hidden in the browser during the quiz.")
+        st.caption("Expected answers are hidden during the quiz. Run Query shows only your query result.")
 
         query_text = st.text_area(
             "Write your SQL query here:",
@@ -495,10 +495,17 @@ for q in questions:
             )
             st.session_state.sql_run_results[run_key] = run_result
 
-            if run_result["success"]:
-                st.info("Query has been saved. The output will be shown only after you submit the quiz.")
-            else:
-                st.info("The query check has been saved. Any execution error will be shown only after you submit the quiz.")
+        saved_run_result = st.session_state.sql_run_results.get(run_key)
+        if saved_run_result:
+            if saved_run_result["success"]:
+                st.code(
+                    format_sql_result_for_email(
+                        saved_run_result["columns"], saved_run_result["rows"]
+                    ),
+                    language="text",
+                )
+            elif saved_run_result["error"]:
+                st.code(saved_run_result["error"], language="text")
 
     st.write("---")
 
@@ -626,7 +633,18 @@ if st.session_state.submitted and st.session_state.result_data:
                 item["user_query"] if item["user_query"].strip() else "No query entered",
                 language="sql",
             )
-            st.write("**Result:** Hidden in the browser.")
+
+            st.write("**Expected Result:**")
+            st.code(item["expected_result_text"], language="text")
+
+            st.write("**Actual Result:**")
+            st.code(item["actual_result_text"], language="text")
+
+            st.write(f"**Failure Reason:** {item['failure_reason']}")
+
+            if item["error"]:
+                st.write("**Execution Error:**")
+                st.code(item["error"], language="text")
 
         st.write("---")
 
