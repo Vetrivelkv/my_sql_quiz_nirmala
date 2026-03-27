@@ -94,6 +94,11 @@ def render_question(question_id: int, question_text: str) -> None:
         st.markdown(f"### Q{question_id}. {question_text}")
 
 
+def render_sql_question(question_id: int, question_text: str) -> None:
+    question_title = question_text.split("\n\n", 1)[0]
+    st.markdown(f"### Q{question_id}. {question_title}")
+
+
 def rows_to_display_data(columns: list[str], rows: list[tuple]) -> list[dict[str, Any]]:
     if not rows:
         return []
@@ -431,7 +436,10 @@ st.write(f"Currently selected: **{st.session_state.selected_quiz}**")
 st.write(f"This quiz contains **{len(questions)}** questions.")
 
 for q in questions:
-    render_question(q["id"], q["question"])
+    if q["type"] == "sql":
+        render_sql_question(q["id"], q["question"])
+    else:
+        render_question(q["id"], q["question"])
 
     if q["type"] == "single":
         selected = st.radio(
@@ -451,10 +459,20 @@ for q in questions:
         st.session_state.answers[q["id"]] = selected
 
     elif q["type"] == "sql":
+        if q.get("schema_sql"):
+            st.write("**Schema:**")
+            st.code(q["schema_sql"], language="sql")
+
+        if q.get("seed_data"):
+            st.write("**Sample Data:**")
+            for table_data in q["seed_data"]:
+                st.write(f"**Table: {table_data['table']}**")
+                st.dataframe(table_data["rows"], use_container_width=True)
+
         sql_key = f"{st.session_state.selected_quiz}_sql_{q['id']}"
         run_key = f"{st.session_state.selected_quiz}_sql_run_{q['id']}"
 
-        st.caption("SQL helper data and output are hidden in the browser during the quiz.")
+        st.caption("Expected answers and SQL output are hidden in the browser during the quiz.")
 
         query_text = st.text_area(
             "Write your SQL query here:",
@@ -596,7 +614,8 @@ if st.session_state.submitted and st.session_state.result_data:
         else:
             st.error(f"Q{item['id']}: Incorrect")
 
-        st.write(f"**Question:** {item['question']}")
+        question_text = item["question"].split("\n\n", 1)[0]
+        st.write(f"**Question:** {question_text}")
 
         if item["type"] in ["single", "multiple"]:
             st.write(f"**Your Answer:** {item['user_answer']}")
