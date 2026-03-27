@@ -1,0 +1,491 @@
+[
+  {
+    "id": 1,
+    "type": "single",
+    "question": "What is a minimal key in SQL design?",
+    "options": [
+      "A key where no column can be removed without losing uniqueness",
+      "A key that contains all columns in a table",
+      "A key that always uses numbers only",
+      "A key used only for sorting rows"
+    ],
+    "answer": ["A key where no column can be removed without losing uniqueness"]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "question": "What is a non-minimal key?",
+    "options": [
+      "A key that has extra columns beyond what is needed for uniqueness",
+      "A key that cannot identify rows",
+      "A key that must be NULL",
+      "A key that exists only in temporary tables"
+    ],
+    "answer": ["A key that has extra columns beyond what is needed for uniqueness"]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "question": "Which real-world example best represents a natural key?",
+    "options": [
+      "Passport number used to identify a traveler",
+      "Auto-generated customer_id column",
+      "A random UUID generated for testing",
+      "A row number added only for display"
+    ],
+    "answer": ["Passport number used to identify a traveler"]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "question": "Which real-world example best represents a surrogate key?",
+    "options": [
+      "An auto-increment employee_id created by the system",
+      "An email address chosen by the user",
+      "A product SKU already used in business",
+      "A phone number entered by a customer"
+    ],
+    "answer": ["An auto-increment employee_id created by the system"]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "question": "What is a surrogate key?",
+    "options": [
+      "A system-generated identifier with no direct business meaning",
+      "A column that always stores text values",
+      "A temporary key used only in SELECT queries",
+      "A foreign key copied from another table"
+    ],
+    "answer": ["A system-generated identifier with no direct business meaning"]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "question": "What is a natural key?",
+    "options": [
+      "A business-meaningful column or set of columns that uniquely identifies a row",
+      "A key created only for joins",
+      "A key that can contain duplicate values",
+      "A key used only in aggregate functions"
+    ],
+    "answer": ["A business-meaningful column or set of columns that uniquely identifies a row"]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "question": "What does the keyword CONSTRAINT do in SQL?",
+    "options": [
+      "It lets us define and optionally name a rule on a table or column",
+      "It fetches rows from a table",
+      "It sorts query results",
+      "It creates sample data automatically"
+    ],
+    "answer": ["It lets us define and optionally name a rule on a table or column"]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "question": "Which SQL snippet shows a valid use of the CONSTRAINT keyword?",
+    "options": [
+      "CONSTRAINT uq_email UNIQUE (email)",
+      "CONSTRAINT SELECT email FROM users",
+      "CONSTRAINT ORDER BY email",
+      "CONSTRAINT SUM(email)"
+    ],
+    "answer": ["CONSTRAINT uq_email UNIQUE (email)"]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "question": "What is a candidate key?",
+    "options": [
+      "A minimal key that can uniquely identify a row",
+      "A key that always becomes a foreign key",
+      "A key that contains all columns in a table",
+      "A key used only for reports"
+    ],
+    "answer": ["A minimal key that can uniquely identify a row"]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "question": "What is a super key?",
+    "options": [
+      "Any set of columns that uniquely identifies a row, even if it has extra columns",
+      "A key that must be numeric",
+      "A key that can contain duplicate values",
+      "A key used only in GROUP BY"
+    ],
+    "answer": ["Any set of columns that uniquely identifies a row, even if it has extra columns"]
+  },
+  {
+    "id": 11,
+    "type": "single",
+    "question": "What is the main difference between PRIMARY KEY and UNIQUE?",
+    "options": [
+      "A PRIMARY KEY does not allow NULL and there is only one per table, while UNIQUE can allow NULL and there can be multiple",
+      "PRIMARY KEY allows duplicates but UNIQUE does not",
+      "UNIQUE is only for text columns",
+      "PRIMARY KEY can be used only in MySQL, not in SQL"
+    ],
+    "answer": ["A PRIMARY KEY does not allow NULL and there is only one per table, while UNIQUE can allow NULL and there can be multiple"]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "question": "Are candidate key, natural key, and surrogate key SQL keywords?",
+    "options": [
+      "No, they are design concepts understood using keys and constraints such as PRIMARY KEY and UNIQUE",
+      "Yes, they are mandatory SQL keywords in every CREATE TABLE statement",
+      "Only surrogate key is an SQL keyword",
+      "Only natural key is an SQL keyword"
+    ],
+    "answer": ["No, they are design concepts understood using keys and constraints such as PRIMARY KEY and UNIQUE"]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "question": "What is aggregation in SQL?",
+    "options": [
+      "Combining multiple rows to produce a summarized result",
+      "Inserting many rows at one time",
+      "Renaming a table",
+      "Joining two databases"
+    ],
+    "answer": ["Combining multiple rows to produce a summarized result"]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "question": "What is the COUNT function used for?",
+    "options": [
+      "To count rows or non-NULL values",
+      "To add numeric values",
+      "To find the maximum value",
+      "To sort rows in a query"
+    ],
+    "answer": ["To count rows or non-NULL values"]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "question": "What happens if you select an aggregate function and a normal column together without GROUP BY in a grouped query?",
+    "options": [
+      "It usually causes an error because the non-aggregated column is not grouped",
+      "SQL automatically groups by that column always",
+      "The normal column is ignored silently",
+      "The aggregate function stops working"
+    ],
+    "answer": ["It usually causes an error because the non-aggregated column is not grouped"]
+  },
+  {
+    "id": 16,
+    "type": "single",
+    "question": "What is GROUP BY used for?",
+    "options": [
+      "To create groups of rows so aggregate functions can be calculated per group",
+      "To sort rows from highest to lowest",
+      "To rename result columns",
+      "To delete duplicate tables"
+    ],
+    "answer": ["To create groups of rows so aggregate functions can be calculated per group"]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "question": "What is HAVING used for?",
+    "options": [
+      "To filter grouped results after aggregation",
+      "To filter rows before grouping",
+      "To join tables",
+      "To create indexes"
+    ],
+    "answer": ["To filter grouped results after aggregation"]
+  },
+  {
+    "id": 18,
+    "type": "single",
+    "question": "What is the key difference between WHERE and HAVING?",
+    "options": [
+      "WHERE filters rows before grouping, while HAVING filters groups after aggregation",
+      "WHERE is used only with joins, while HAVING is used only with subqueries",
+      "WHERE works only on numbers, while HAVING works only on text",
+      "There is no difference between them"
+    ],
+    "answer": ["WHERE filters rows before grouping, while HAVING filters groups after aggregation"]
+  },
+  {
+    "id": 19,
+    "type": "sql",
+    "question": "Count all rows in the employees table.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 }
+        ]
+      }
+    ],
+    "expected_columns": ["total_employees"],
+    "expected_rows": [[3]]
+  },
+  {
+    "id": 20,
+    "type": "sql",
+    "question": "Count employees where department = 'IT'.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 }
+        ]
+      }
+    ],
+    "expected_columns": ["it_count"],
+    "expected_rows": [[2]]
+  },
+  {
+    "id": 21,
+    "type": "sql",
+    "question": "Count employees where department = 'IT' AND salary > 46000.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 },
+          { "id": 4, "name": "Deepa", "department": "Sales", "salary": 52000 }
+        ]
+      }
+    ],
+    "expected_columns": ["matching_count"],
+    "expected_rows": [[1]]
+  },
+  {
+    "id": 22,
+    "type": "sql",
+    "question": "Count employees where department = 'HR' OR department = 'Sales'.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 },
+          { "id": 4, "name": "Deepa", "department": "Sales", "salary": 52000 }
+        ]
+      }
+    ],
+    "expected_columns": ["selected_count"],
+    "expected_rows": [[2]]
+  },
+  {
+    "id": 23,
+    "type": "sql",
+    "question": "Count products where category IN ('Electronics', 'Furniture').",
+    "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, category TEXT, price INTEGER);",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          { "id": 1, "product_name": "Laptop", "category": "Electronics", "price": 70000 },
+          { "id": 2, "product_name": "Chair", "category": "Furniture", "price": 3000 },
+          { "id": 3, "product_name": "Pen", "category": "Stationery", "price": 20 }
+        ]
+      }
+    ],
+    "expected_columns": ["category_count"],
+    "expected_rows": [[2]]
+  },
+  {
+    "id": 24,
+    "type": "sql",
+    "question": "Count products where category NOT IN ('Stationery').",
+    "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, category TEXT, price INTEGER);",
+    "seed_data": [
+      {
+        "table": "products",
+        "rows": [
+          { "id": 1, "product_name": "Laptop", "category": "Electronics", "price": 70000 },
+          { "id": 2, "product_name": "Chair", "category": "Furniture", "price": 3000 },
+          { "id": 3, "product_name": "Pen", "category": "Stationery", "price": 20 }
+        ]
+      }
+    ],
+    "expected_columns": ["non_stationery_count"],
+    "expected_rows": [[2]]
+  },
+  {
+    "id": 25,
+    "type": "sql",
+    "question": "Find the sum of all salaries and show it as total_salary.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Arun", "salary": 25000 },
+          { "id": 2, "name": "Bina", "salary": 30000 },
+          { "id": 3, "name": "Charan", "salary": 45000 }
+        ]
+      }
+    ],
+    "expected_columns": ["total_salary"],
+    "expected_rows": [[100000]]
+  },
+  {
+    "id": 26,
+    "type": "sql",
+    "question": "Find the minimum salary from the employees table.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Arun", "salary": 25000 },
+          { "id": 2, "name": "Bina", "salary": 30000 },
+          { "id": 3, "name": "Charan", "salary": 45000 }
+        ]
+      }
+    ],
+    "expected_columns": ["min_salary"],
+    "expected_rows": [[25000]]
+  },
+  {
+    "id": 27,
+    "type": "sql",
+    "question": "Find the average salary from the employees table.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Arun", "salary": 25000 },
+          { "id": 2, "name": "Bina", "salary": 30000 },
+          { "id": 3, "name": "Charan", "salary": 45000 }
+        ]
+      }
+    ],
+    "expected_columns": ["avg_salary"],
+    "expected_rows": [[33333.333333333336]]
+  },
+  {
+    "id": 28,
+    "type": "sql",
+    "question": "Show each department with the count of employees in it.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR" },
+          { "id": 2, "name": "Bala", "department": "IT" },
+          { "id": 3, "name": "Cathy", "department": "IT" },
+          { "id": 4, "name": "Deepa", "department": "Sales" }
+        ]
+      }
+    ],
+    "expected_columns": ["department", "employee_count"],
+    "expected_rows": [
+      ["HR", 1],
+      ["IT", 2],
+      ["Sales", 1]
+    ]
+  },
+  {
+    "id": 29,
+    "type": "sql",
+    "question": "Show each department with the sum of salary for that department.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 },
+          { "id": 4, "name": "Deepa", "department": "Sales", "salary": 52000 }
+        ]
+      }
+    ],
+    "expected_columns": ["department", "total_salary"],
+    "expected_rows": [
+      ["HR", 30000],
+      ["IT", 95000],
+      ["Sales", 52000]
+    ]
+  },
+  {
+    "id": 30,
+    "type": "sql",
+    "question": "Show departments having more than 1 employee.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR" },
+          { "id": 2, "name": "Bala", "department": "IT" },
+          { "id": 3, "name": "Cathy", "department": "IT" },
+          { "id": 4, "name": "Deepa", "department": "Sales" }
+        ]
+      }
+    ],
+    "expected_columns": ["department"],
+    "expected_rows": [["IT"]]
+  },
+  {
+    "id": 31,
+    "type": "sql",
+    "question": "Show departments where the total salary is greater than 50000.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 },
+          { "id": 4, "name": "Deepa", "department": "Sales", "salary": 52000 }
+        ]
+      }
+    ],
+    "expected_columns": ["department"],
+    "expected_rows": [
+      ["IT"],
+      ["Sales"]
+    ]
+  },
+  {
+    "id": 32,
+    "type": "sql",
+    "question": "Show departments and employee counts only for rows where salary is greater than 40000.",
+    "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
+    "seed_data": [
+      {
+        "table": "employees",
+        "rows": [
+          { "id": 1, "name": "Anu", "department": "HR", "salary": 30000 },
+          { "id": 2, "name": "Bala", "department": "IT", "salary": 45000 },
+          { "id": 3, "name": "Cathy", "department": "IT", "salary": 50000 },
+          { "id": 4, "name": "Deepa", "department": "Sales", "salary": 52000 }
+        ]
+      }
+    ],
+    "expected_columns": ["department", "employee_count"],
+    "expected_rows": [
+      ["IT", 2],
+      ["Sales", 1]
+    ]
+  }
+]

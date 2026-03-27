@@ -22,6 +22,7 @@ QUIZ_FILES = {
     "SQL Quiz 1 - Basics-1": "sql_quiz_1.json",
     "SQL Quiz 2 - Basics-2": "sql_quiz_2.json",
     "SQL Quiz 3 - Basics-3": "sql_quiz_3.json",
+    "SQL Quiz 4 - Keys and Aggregation": "sql_quiz_4.json",
 }
 
 READ_ONLY_SQL_KEYWORDS = {
@@ -450,20 +451,10 @@ for q in questions:
         st.session_state.answers[q["id"]] = selected
 
     elif q["type"] == "sql":
-        if q.get("schema_sql"):
-            st.write("**Schema:**")
-            st.code(q["schema_sql"], language="sql")
-
-        if q.get("seed_data"):
-            st.write("**Sample Data:**")
-            for table_data in q["seed_data"]:
-                st.write(f"**Table: {table_data['table']}**")
-                st.dataframe(table_data["rows"], use_container_width=True)
-
         sql_key = f"{st.session_state.selected_quiz}_sql_{q['id']}"
         run_key = f"{st.session_state.selected_quiz}_sql_run_{q['id']}"
 
-        st.caption("SQL output is hidden until you submit the quiz.")
+        st.caption("SQL helper data and output are hidden in the browser during the quiz.")
 
         query_text = st.text_area(
             "Write your SQL query here:",
@@ -616,18 +607,7 @@ if st.session_state.submitted and st.session_state.result_data:
                 item["user_query"] if item["user_query"].strip() else "No query entered",
                 language="sql",
             )
-
-            st.write("**Expected Result:**")
-            st.code(item["expected_result_text"], language="text")
-
-            st.write("**Actual Result:**")
-            st.code(item["actual_result_text"], language="text")
-
-            st.write(f"**Failure Reason:** {item['failure_reason']}")
-
-            if item["error"]:
-                st.write("**Execution Error:**")
-                st.code(item["error"], language="text")
+            st.write("**Result:** Hidden in the browser.")
 
         st.write("---")
 
