@@ -218,7 +218,7 @@
   {
     "id": 19,
     "type": "sql",
-    "question": "Count all rows in the employees table.",
+    "question": "Count all rows in the employees table and show the result as total_employees.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -236,7 +236,7 @@
   {
     "id": 20,
     "type": "sql",
-    "question": "Count employees where department = 'IT'.",
+    "question": "Count employees where department = 'IT' and show the result as it_count.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -254,7 +254,7 @@
   {
     "id": 21,
     "type": "sql",
-    "question": "Count employees where department = 'IT' AND salary > 46000.",
+    "question": "Count employees where department = 'IT' AND salary > 46000 and show the result as matching_count.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -273,7 +273,7 @@
   {
     "id": 22,
     "type": "sql",
-    "question": "Count employees where department = 'HR' OR department = 'Sales'.",
+    "question": "Count employees where department = 'HR' OR department = 'Sales' and show the result as selected_count.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -292,7 +292,7 @@
   {
     "id": 23,
     "type": "sql",
-    "question": "Count products where category IN ('Electronics', 'Furniture').",
+    "question": "Count products where category IN ('Electronics', 'Furniture') and show the result as category_count.",
     "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, category TEXT, price INTEGER);",
     "seed_data": [
       {
@@ -310,7 +310,7 @@
   {
     "id": 24,
     "type": "sql",
-    "question": "Count products where category NOT IN ('Stationery').",
+    "question": "Count products where category NOT IN ('Stationery') and show the result as non_stationery_count.",
     "schema_sql": "CREATE TABLE products (id INTEGER, product_name TEXT, category TEXT, price INTEGER);",
     "seed_data": [
       {
@@ -346,7 +346,7 @@
   {
     "id": 26,
     "type": "sql",
-    "question": "Find the minimum salary from the employees table.",
+    "question": "Find the minimum salary from the employees table and show the result as min_salary.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -364,7 +364,7 @@
   {
     "id": 27,
     "type": "sql",
-    "question": "Find the average salary from the employees table.",
+    "question": "Find the average salary from the employees table and show the result as avg_salary.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -382,7 +382,7 @@
   {
     "id": 28,
     "type": "sql",
-    "question": "Show each department with the count of employees in it.",
+    "question": "Show each department with the count of employees in it, and show the count column as employee_count.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT);",
     "seed_data": [
       {
@@ -405,7 +405,7 @@
   {
     "id": 29,
     "type": "sql",
-    "question": "Show each department with the sum of salary for that department.",
+    "question": "Show each department with the sum of salary for that department, and show the sum column as total_salary.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
     "seed_data": [
       {
@@ -469,7 +469,7 @@
   {
     "id": 32,
     "type": "sql",
-    "question": "Show departments and employee counts only for rows where salary is greater than 40000.",
+    "question": "Show departments and employee counts only for rows where salary is greater than 40000, and show the count column as employee_count.",
     "schema_sql": "CREATE TABLE employees (id INTEGER, name TEXT, department TEXT, salary INTEGER);",
     "seed_data": [
       {
