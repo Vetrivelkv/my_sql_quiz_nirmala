@@ -365,7 +365,7 @@
   {
     "id": 24,
     "type": "sql",
-    "question": "Return a message only if the users table exists.\n\nSELECT 'users table exists' AS message FROM users LIMIT 1;",
+    "question": "Return the text 'users table exists' as message if the users table exists.",
     "schema_sql": "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);",
     "seed_data": [
       {
